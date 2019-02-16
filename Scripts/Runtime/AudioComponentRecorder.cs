@@ -55,15 +55,16 @@ namespace ICKX.AudioRecorder {
 		}
 
 		private void OnDestroy () {
-			if(IsRecording) {
-				StopRecording ();
+			if (_WriteThread != null) {
+				Debug.LogError ("StopRecordingが実行されていません 録音失敗しました");
+				_WriteThread.Abort ();
 			}
 		}
 
 		/// <summary>
 		/// 
 		/// </summary>
-		public void StartRecording (string fileName, int bitPerSampleCompress = 2, int samplingRateCompress = 1) {
+		public void StartRecording (string fileName, int bitPerSampleCompress = 1, int samplingRateCompress = 1) {
 			if (IsRecording) return;
 
 			if (bitPerSampleCompress < 0 || bitPerSampleCompress > 3) {
@@ -236,6 +237,8 @@ namespace ICKX.AudioRecorder {
 			_FileStream.Write (subChunk2, 0, 4);
 
 			_FileStream.Close ();
+
+			_WriteThread = null;
 		}
 
 		/// <summary>
