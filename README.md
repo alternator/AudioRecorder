@@ -6,7 +6,7 @@ AudioComponentRecorderをAudioListerやAudioSourceのあるGameObjectにアタ�
 
 ### 使い方
 
-DefaultCopyBufferSize の値は録音するデータを一度バッファに格納し、この値ごとに録音したデータがファイルに書き込まれます  (頻度が細かすぎて書き込みが間に合わない場合は自動で伸長します)
+DefaultCopyBufferSizeの値の分録音するデータを一度バッファに格納し、この値ごとに録音したデータがファイルに書き込まれます  (頻度が細かすぎて書き込みが間に合わない場合は自動で伸長します)
 
 録音開始 は StartRecording (fileName, bitPerSampleCompress, samplingRateCompress)
 録音停止 は StopRecording ()
